@@ -21,5 +21,24 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
       
-    - name: Test
-      run: dotnet test --configuration Release --no-build --verbosity normal
+    - name: Test with Coverage
+      run: |
+        dotnet test \
+          --configuration Release \
+          --no-build \
+          --verbosity normal \
+          --settings coverlet.runsettings \
+          --logger "trx;LogFileName=test-results.trx" \
+          --results-directory ./TestResults
+          
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results
+        path: TestResults/**/*
+
+    - name: Check Coverage
+      run: |
+        echo "Coverage report generated in TestResults directory"
+        echo "To view detailed coverage, run locally: dotnet test --collect:'XPlat Code Coverage'"
