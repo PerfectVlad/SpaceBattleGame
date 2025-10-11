@@ -12,7 +12,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 9.0.x
         
     - name: Restore dependencies
       run: dotnet restore
@@ -20,10 +20,16 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
       
-    - name: Test
-      run: dotnet test --no-build --configuration Release --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+    - name: Test with Coverage
+      run: |
+        dotnet test --no-build --configuration Release --verbosity normal \
+          /p:CollectCoverage=true \
+          /p:CoverletOutputFormat=lcov \
+          /p:CoverletOutput=./lcov.info \
+          /p:Exclude="[xunit.*]*%2c[*.Tests]*"
       
-    - name: Generate Coverage Report
+    - name: Upload Coverage to Coveralls
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ./SpaceBattle.Tests/lcov.infogit status
