@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -18,18 +19,7 @@ jobs:
       run: dotnet restore
       
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --configuration Release --no-restore
       
-    - name: Test with Coverage
-      run: |
-        dotnet test --no-build --configuration Release --verbosity normal \
-          /p:CollectCoverage=true \
-          /p:CoverletOutputFormat=lcov \
-          /p:CoverletOutput=./lcov.info \
-          /p:Exclude="[xunit.*]*%2c[*.Tests]*"
-      
-    - name: Upload Coverage to Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ./SpaceBattle.Tests/lcov.infogit status
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
