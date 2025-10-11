@@ -7,23 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 9.0.x
         
     - name: Restore dependencies
       run: dotnet restore
       
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --configuration Release --no-restore
       
     - name: Test
-      run: dotnet test --no-build --configuration Release --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-      
-    - name: Generate Coverage Report
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet test --configuration Release --no-build --verbosity normal
