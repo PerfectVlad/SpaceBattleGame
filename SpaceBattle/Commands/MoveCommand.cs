@@ -3,7 +3,7 @@ using SpaceBattle.Exceptions;
 
 namespace SpaceBattle.Commands
 {
-    public class MoveCommand
+    public class MoveCommand : ICommand
     {
         private readonly IMovable movable;
 
@@ -16,19 +16,14 @@ namespace SpaceBattle.Commands
         {
             try
             {
-                // Получаем текущую позицию
                 var position = movable.GetPosition();
-                
-                // Получаем скорость
                 var velocity = movable.GetVelocity();
                 
-                // Вычисляем новую позицию
                 var newPosition = (
                     x: position.x + velocity.x,
                     y: position.y + velocity.y
                 );
                 
-                // Устанавливаем новую позицию
                 movable.SetPosition(newPosition);
             }
             catch (UnableToGetPositionException)
