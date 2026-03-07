@@ -1,0 +1,5 @@
+SpaceBattle/IoC/IoCContainer.cs
+SpaceBattle/Interfaces/ICommand.cs
+SpaceBattle/Commands/BridgeCommand.cs
+SpaceBattle/Interfaces/IQueue.cs
+SpaceBattle/Adapters/QueueAdapter.cs
