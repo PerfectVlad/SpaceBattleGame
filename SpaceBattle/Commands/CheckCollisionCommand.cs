@@ -4,7 +4,6 @@ using SpaceBattle.Collision;
 
 namespace SpaceBattle.Commands
 {
-    // Команда проверки столкновения двух объектов
     public class CheckCollisionCommand : ICommand
     {
         private readonly object object1;
