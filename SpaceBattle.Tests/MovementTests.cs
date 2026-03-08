@@ -5,7 +5,6 @@ using SpaceBattle.Exceptions;
 
 namespace SpaceBattle.Tests
 {
-    // Тестовый класс для имитации движущегося объекта
     public class TestMovable : IMovable
     {
         private (int x, int y) position;
@@ -45,7 +44,7 @@ namespace SpaceBattle.Tests
             position = newPosition;
         }
 
-        // Вспомогательное свойство для проверки в тестах
+        // Вспомогательное свойство для проверки
         public (int x, int y) CurrentPosition => position;
     }
 
