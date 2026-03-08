@@ -18,8 +18,6 @@ namespace SpaceBattle.Commands
             var uObject = startable.GetUObject();
             var velocity = startable.GetVelocity();
             
-            // Здесь будет логика установки скорости в UObject
-            // Пока просто сохраняем в адаптер
 
             //  Создаем адаптер Movable
             var velocityChangeable = new VelocityChangeableAdapter();

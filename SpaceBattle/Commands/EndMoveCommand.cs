@@ -26,7 +26,6 @@ namespace SpaceBattle.Commands
 
             //  Удаляем скорость из объекта
             var uObject = endable.GetUObject();
-            // Здесь будет логика удаления скорости из UObject
         }
     }
 
@@ -34,7 +33,6 @@ namespace SpaceBattle.Commands
     {
         public void Execute()
         {
-            // Пустая команда - ничего не делает
         }
     }
 }
