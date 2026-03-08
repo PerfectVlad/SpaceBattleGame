@@ -7,7 +7,6 @@ using SpaceBattle.Commands;
 namespace SpaceBattle.IoC
 {
 
-    /// Стратегия создания макрокоманды по имени составной операции
 
     public static class MacroCommandStrategy
     {
@@ -38,7 +37,7 @@ namespace SpaceBattle.IoC
                 return new MacroCommand(commands);
             });
 
-            // Регистрируем пример информации для операции "Move"
+            // Регистрируем пример информации для операции Move
             IoCContainer.Register("Move.Info", args =>
             {
                 object target = args[0];

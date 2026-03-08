@@ -58,8 +58,8 @@ namespace SpaceBattle.IoC
     {
         public string Name { get; set; } = string.Empty;  // Инициализируем пустой строкой
         public object Target { get; set; } = new object();  // Инициализируем новым объектом
-        public BridgeCommand Command { get; set; } = null!;  // Будет установлено позже
-        public IQueue<ICommand> Queue { get; set; } = null!;  // Будет установлено позже
+        public BridgeCommand Command { get; set; } = null!;  
+        public IQueue<ICommand> Queue { get; set; } = null!;  
     }
 
     public class StartLongOperationCommand : ICommand

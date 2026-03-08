@@ -7,7 +7,7 @@ namespace SpaceBattle.Commands
     {
         public void Execute()
         {
-            // Ничего не делаем
+            
         }
     }
 }

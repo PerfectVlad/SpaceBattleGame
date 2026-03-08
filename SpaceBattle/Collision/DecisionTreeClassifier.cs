@@ -2,7 +2,6 @@ using System;
 
 namespace SpaceBattle.Collision
 {
-    // Классификатор на основе дерева решений
     public class DecisionTreeClassifier
     {
         private readonly DecisionTreeNode root;
